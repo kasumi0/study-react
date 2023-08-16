@@ -1,0 +1,147 @@
+.card {
+  width: 50%;
+  height: 80%;
+  position: relative;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 500;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 2em 5em;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  box-shadow: 12px 12px 22px -4px rgba(0, 0, 0, 0.7);
+}
+.box {
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin-bottom: 1em;
+  align-items: center;
+  height: 48px;
+  border-radius: 2em;
+  box-shadow: inset 8px 8px 13px rgba(212, 212, 212, 0.5),
+    inset -8px -8px 13px rgb(255, 255, 255, 0.7);
+}
+.input {
+  padding: 0.3em 1em 0;
+  width: 100%;
+}
+.add_btn {
+  width: 60px;
+  background-color: var(--primary-c);
+  border-radius: 0 2em 2em 0;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding-right: 4px;
+  position: relative;
+}
+.add_btn span {
+  font-size: 32px;
+}
+.tooltip {
+  position: absolute;
+  font-size: 14px;
+  white-space: nowrap;
+  bottom: -50%;
+  padding: 0.2em 0.5em 0;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+.add_btn:hover .tooltip {
+  opacity: 1;
+  transition-delay: 1s;
+}
+
+.multi_column {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  margin-inline: auto;
+  justify-content: space-around;
+}
+.del_btn {
+  height: 70px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 8px;
+  background: linear-gradient(
+    145deg,
+    rgba(186, 186, 186, 0.3),
+    rgba(0, 0, 0, 0.4)
+  );
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.3),
+    -6px -6px 10px rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  border-right: 2px solid rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  transition: 0.4s;
+}
+.del_btn span {
+  font-size: 2em;
+}
+.del_btn:hover {
+  translate: 2px 2px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+    -2px -2px 4px rgba(255, 255, 255, 0.3);
+}
+.del_btn:hover .tooltip {
+  opacity: 1;
+  transition-delay: 1s;
+}
+.not_completed {
+  text-align: center;
+}
+.not_completed span {
+  font-size: 1.4em;
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+  width: 2em;
+  height: 2em;
+  padding-top: 0.2em;
+  border-radius: 1em;
+}
+.filled {
+  background-color: var(--primary-c);
+}
+.empty {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.not_completed p {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-top: .6em;
+  border: 1px solid;
+  padding: .3em 1em 0;
+  border-radius: 1em;
+}
+.hidden {
+  display: none;
+}
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  position: absolute;
+  left: 50%;
+  bottom: -80%;
+  translate: -50%;
+  font-size: 16px;
+  color: #a63030;
+}
+.error span {
+  padding-bottom: 0.4em;
+}

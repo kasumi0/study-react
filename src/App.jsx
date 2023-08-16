@@ -1,15 +1,22 @@
 import { useRef, useState } from "react";
-import "./App.css";
 import { TodoList } from "./TodoList";
 import { v4 as uuidv4 } from "uuid";
+import classes from "./App.module.css";
 
 export const App = () => {
   const [todos, setTodos] = useState([]);
 
   const todoNameRef = useRef();
+  
+  const [error, setError] = useState(false);
 
   const handleAddTodo = () => {
     const name = todoNameRef.current.value;
+    if (!name) {
+      setError(true);
+      return;
+    }
+    setError(false);
     setTodos((prevTodos) => {
       return [...prevTodos, { id: uuidv4(), name: name, completed: false }];
     });
@@ -28,13 +35,34 @@ export const App = () => {
     setTodos(newTodos);
   };
 
+  const tasksLen = todos.filter((todo) => !todo.completed).length;
+
   return (
-    <div>
+    <div className={classes.card}>
       <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <input type="text" ref={todoNameRef} />
-      <button onClick={handleAddTodo}>タスクを追加</button>
-      <button onClick={handleClear}>完了したタスクの削除</button>
-      <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
+      <div className={classes.box}>
+        <input type="text" ref={todoNameRef} className={classes.input} />
+        <button onClick={handleAddTodo} className={classes.add_btn}>
+          <span className="material-symbols-outlined">check_circle</span>
+          <div className={classes.tooltip}>タスクの追加</div>
+        </button>
+        <div className={error ? classes.error : classes.hidden}>
+          <span className="material-symbols-outlined">warning</span>
+          タスクを入力して下さい
+        </div>
+      </div>
+      <div className={classes.multi_column}>
+        <button onClick={handleClear} className={classes.del_btn}>
+          <span className="material-symbols-outlined">delete</span>
+          <div className={classes.tooltip}>完了したタスクを削除</div>
+        </button>
+        <div className={classes.not_completed}>
+          <span className={tasksLen ? classes.filled : classes.empty}>
+            {tasksLen}
+          </span>
+          <p>残りのタスク</p>
+        </div>
+      </div>
     </div>
   );
 };

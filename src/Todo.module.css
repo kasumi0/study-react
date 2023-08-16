@@ -1,0 +1,44 @@
+.task {
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  background-color: var(--primary-c);
+  padding: .6em 1em;
+  cursor: pointer;
+  position: relative;
+  transition: .4s;
+}
+.task:not(:first-child) {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.marker {
+  position: absolute;
+  width: .5em;
+  height: .8em;
+  border-right: 3px solid;
+  border-bottom: 3px solid;
+  rotate: 45deg;
+  left: 1.5em;
+  bottom: 1.1em;
+  scale: .5;
+  opacity: 0;
+  transition: .4s;
+}
+.box {
+  font-size: 1.2em;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 6px;
+  box-shadow: inset 3px 3px 6px rgba(212, 212, 212, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+}
+.box:checked + .marker {
+  opacity: 1;
+  scale: 1;
+}
+.task:has(.box:checked) {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.task_name {
+  padding-top: .2em;
+}
